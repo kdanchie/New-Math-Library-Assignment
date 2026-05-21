@@ -12,9 +12,11 @@ public:
 	const Vec3& operator + (const Vec3& v) const;
 	Vec3& operator += (const Vec3& v);
 	Vec3& operator = (const Vec3& v);
-	float Mag();
-	Vec3 Normalize();
+	static float Mag(const Vec3& vec);
+	static Vec3 Normalize(const Vec3& vec);
 	void Normalize_2();
+	static Vec3 cross(const Vec3& vecA, const Vec3& vecB);
+	static float dot(const Vec3& vecA, const Vec3& vecB);
 
 
 };
@@ -28,7 +30,15 @@ public:
 	// constructors
 	Vec4();
 	Vec4(float x, float y, float z, float w);
+	Vec4(const Vec4& v);
+	// operators + - * 
+	const Vec4& operator + (const Vec4& v) const;
+	Vec4& operator += (const Vec4& v);
+	Vec4& operator = (const Vec4& v);
+
+	static float Mag(const Vec4& vec);
 	
+
 
 	
 
