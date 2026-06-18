@@ -32,17 +32,30 @@ float Vec3::dot(const Vec3& vecA, const Vec3& vecB){
 
 	return (vecA.x * vecB.x) + (vecA.y * vecB.y) + (vecA.z * vecB.z);
 }
-const Vec3& Vec3::operator+(const Vec3& v) const
-{
+const Vec3& Vec3::operator+(const Vec3& v) const{
 	return Vec3(x + v.x, y + v.y, z + v.z);
 }
 
-Vec3& Vec3::operator+=(const Vec3& v)
-{
+const Vec3& Vec3::operator-(const Vec3& v) const{
+	return Vec3(x - v.x, y - v.y, z - v.z);
+}
+
+Vec3& Vec3::operator+=(const Vec3& v){
 	x += v.x;//x=x+v.x
 	y += v.y;// y=y+v.y;
 	z += v.z;// z=z+v.z;
 	return *this;
+}
+
+Vec3& Vec3::operator-=(const Vec3& v){
+	x -= v.x;//x=x+v.x
+	y -= v.y;// y=y+v.y;
+	z -= v.z;// z=z+v.z;
+	return *this;
+}
+
+const Vec3& Vec3::operator*(const float s) const{
+	return Vec3(x * s, y * s, z * s);
 }
 
 Vec3& Vec3::operator=(const Vec3& v)
@@ -60,9 +73,12 @@ Vec3 Vec3::Normalize(const Vec3& vec){
 	return Vec3(vec.x / mag, vec.y / mag, vec.z / mag);
 }
 
-const Vec4& Vec4::operator+(const Vec4& v) const
-{
-	return Vec4(x + v.x, y + v.y, z + v.z, w * v.w);
+const Vec4& Vec4::operator+(const Vec4& v) const{
+	return Vec4(x + v.x, y + v.y, z + v.z, w + v.w);
+}
+
+const Vec4& Vec4::operator-(const Vec4& v) const{
+	return Vec4(x - v.x, y - v.y, z - v.z, w - v.w);
 }
 
 Vec4& Vec4::operator+=(const Vec4& v)
@@ -74,16 +90,37 @@ Vec4& Vec4::operator+=(const Vec4& v)
 	return *this;
 }
 
+Vec4& Vec4::operator-=(const Vec4& v){
+	x -= v.x;//x=x+v.x
+	y -= v.y;// y=y+v.y;
+	z -= v.z;// z=z+v.z;
+	w -= v.w;
+	return *this;
+}
+
 Vec4& Vec4::operator=(const Vec4& v)
 {
 	set(v.x, v.y, v.z, v.w);
 	return *this;
 }
 
-float Vec4::Mag(const Vec4& vec)
-{
-	return sqrt(vec.x * vec.x + vec.y * vec.y + vec.z * vec.z + vec.w * vec.w);
-	;
+const Vec4& Vec4::operator*(const float s) const{
+	return Vec4(x * s, y * s, z * s, w * s);
+}
+
+float Vec4::Mag(){
+	return sqrt(x * x + y * y + z * z + w * w);
+	
+}
+
+float Vec4::dot(const Vec4& vecA, const Vec4& vecB){
+
+	return (vecA.x * vecB.x) + (vecA.y * vecB.y) + (vecA.z * vecB.z) + (vecA.w * vecB.w);
+}
+
+Vec4 Vec4::Normalize(Vec4& vec){
+	float mag = vec.Mag();
+	return Vec4(vec.x / mag, vec.y / mag, vec.z / mag, vec.w / mag);
 }
 
 void Vec4::set(float x_, float y_, float z_, float w_){

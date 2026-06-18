@@ -10,7 +10,10 @@ public:
 	Vec3(const Vec3& v);
 	// operators + - * 
 	const Vec3& operator + (const Vec3& v) const;
+	const Vec3& operator - (const Vec3& v) const;
 	Vec3& operator += (const Vec3& v);
+	Vec3& operator -= (const Vec3& v);
+	const Vec3& operator * (const float s) const;
 	Vec3& operator = (const Vec3& v);
 	static float Mag(const Vec3& vec);
 	static Vec3 Normalize(const Vec3& vec);
@@ -33,14 +36,15 @@ public:
 	Vec4(const Vec4& v);
 	// operators + - * 
 	const Vec4& operator + (const Vec4& v) const;
+	const Vec4& operator - (const Vec4& v) const;
 	Vec4& operator += (const Vec4& v);
+	Vec4& operator -= (const Vec4& v);
 	Vec4& operator = (const Vec4& v);
+	const Vec4& operator * (const float s) const;
 
-	static float Mag(const Vec4& vec);
-	
-
-
-	
-
+	float Mag();
+	static float dot(const Vec4& vecA, const Vec4& vecB);
+	Vec4 Normalize(Vec4& vec);
 
 };
+

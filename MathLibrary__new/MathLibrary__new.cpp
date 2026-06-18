@@ -3,10 +3,11 @@
 
 #include <iostream>
 #include "Vector.h"
-int main()
-{
-	 Vec3 v(2.0, 2.0, 1.0);
-	 Vec3 u(4.0, 2.0, 1.0);
+#include "Quaternion.h"
+int main(){
+
+	Vec3 v(2.0, 2.0, 1.0);
+	Vec3 u(4.0, 2.0, 1.0);
 
 	float magnitude = Vec3::Mag(v);
 	std::cout << "magnitude = " << magnitude << "\n\n";
@@ -19,24 +20,51 @@ int main()
 
 	Vec3 result = Vec3::cross(v, u);
 	std::cout << "cross result " << result.x << " " << result.y << " " << result.z << "\n\n";
-	
-	Vec4 i;
+
+	Vec4 i, j;
 	i.set(1.0, 2.0, 3.0, 1.0);
+	j.set(3.0, 2.0, 3.0, 1.0);
 
-	//int x = 4;
-	//x += 2;
-	//Vec3 v(2, 4, 5);
-	//// vec3 Normalize();
-	//Vec3 N = v.Normalize();
-	//
+	magnitude = i.Mag();
+	std::cout << "magnitude = " << magnitude << "\n\n";
 
-	//Vec3 u(1, 2, 1);
-	//Vec3 w = u + v;
-	//w += u;// w=w+u;
-	//std::cout << w.x << " " << w.y << " " << w.z << std:: endl;
+	float dot4 = Vec4::dot(i, j);
+	std::cout << "dot 4 result  " << dot4 << "\n\n";
 
+	std::cout << " ASSIGNMENT 2 \n\n\n";
 
-	
-	
+	//assignment 2
+	Quaternion q1 = Quaternion(3, Vec3(1, 2, 2));
+	Quaternion q2 = Quaternion(5, 2, 1, 2);
+	float mag = q1.Mag();
+
+	std::cout << "q1 magnitide  " << mag << "\n\n";
+
+	Quaternion q12 = q1+q2;
+
+	std::cout << "q1 q2 add result " << q12.w << " " << q12.x << " " << q12.y << " " << q12.z << "\n\n";
+
+	float qdot = Quaternion::dot(q1, q2);
+
+	std::cout << "dot result  " << qdot << "\n\n";
+
+	Quaternion conj = q1.Conjugate();
+
+	std::cout << "conjugate result " << conj.w << " " << conj.x << " " << conj.y << " " << conj.z << "\n\n";
+
+	Quaternion inverse = q1.Inverse();
+
+	std::cout << "inverse result " << inverse.w << " " << inverse.x << " " << inverse.y << " " << inverse.z << "\n\n";
+
+	Quaternion mult = q1 * q2;
+
+	std::cout << "multiply result " << mult.w << " " << mult.x << " " << mult.y << " " << mult.z << "\n\n";
+
+	Quaternion rotate = Quaternion(Vec3(0, 0, 1), 90);
+	Vec3 Vector = Vec3(1, 0, 0);
+
+	Vector = Quaternion::Rotate(Vector, rotate);
+
+	std::cout << "roatated vector: " << Vector.x << " " << Vector.y << " " << Vector.z << "\n\n";
+
 }
-
