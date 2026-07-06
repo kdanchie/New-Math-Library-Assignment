@@ -18,6 +18,7 @@ public:
 	static float Mag(const Vec3& vec);
 	static Vec3 Normalize(const Vec3& vec);
 	void Normalize_2();
+	float magnitude();
 	static Vec3 cross(const Vec3& vecA, const Vec3& vecB);
 	static float dot(const Vec3& vecA, const Vec3& vecB);
 
@@ -33,6 +34,7 @@ public:
 	// constructors
 	Vec4();
 	Vec4(float x, float y, float z, float w);
+	Vec4(Vec3 vec_, float w_);
 	Vec4(const Vec4& v);
 	// operators + - * 
 	const Vec4& operator + (const Vec4& v) const;

@@ -4,6 +4,7 @@
 #include <iostream>
 #include "Vector.h"
 #include "Quaternion.h"
+#include "Plane_.h"
 int main(){
 
 	Vec3 v(2.0, 2.0, 1.0);
@@ -34,8 +35,8 @@ int main(){
 	std::cout << " ASSIGNMENT 2 \n\n\n";
 
 	//assignment 2
-	Quaternion q1 = Quaternion(3, Vec3(1, 2, 2));
-	Quaternion q2 = Quaternion(5, 2, 1, 2);
+	Quaternion q1 = Quaternion(2, Vec3(3, 1, 7));
+	Quaternion q2 = Quaternion(1, 3, 1, 2);
 	float mag = q1.Mag();
 
 	std::cout << "q1 magnitide  " << mag << "\n\n";
@@ -67,4 +68,25 @@ int main(){
 
 	std::cout << "roatated vector: " << Vector.x << " " << Vector.y << " " << Vector.z << "\n\n";
 
+
+	std::cout << " ASSIGNMENT 3 \n\n\n";
+
+
+		//ray
+	Vec3 S(1, 0, 1);
+	Vec3 V(3, 2, 1);
+		// normalize V
+	Ray ray(S, V);
+
+	//plane
+	Vec3 N(1, 2, 3);
+	Vec3 p(1, 1, 0);
+	//N.Normalize_2();
+	Plane plane = Plane(2, 1, 0, -4);
+
+	Vec3 inetrsect = plane.intersectionPoint(ray);
+
+	std::cout << "plane eqtn " << plane.plane.x << " " << plane.plane.y << " " << plane.plane.z << " " << plane.plane.w << "\n\n";
+
+	std::cout << "inetrsect: " << inetrsect.x << " " << inetrsect.y << " " << inetrsect.z << "\n\n";
 }

@@ -19,7 +19,16 @@ Vec3::Vec3(float x, float y, float z)
 }
 
 void Vec3::Normalize_2(){
+	float mag = magnitude();
+	x = x / mag;
+	y = y / mag;
+	z = z / mag;
 }
+
+float Vec3::magnitude(){
+	return sqrt(x * x + y * y + z * z);
+}
+
 Vec3 Vec3::cross(const Vec3& vecA, const Vec3& vecB) {
 	Vec3 result;
 	result.x = (vecA.y * vecB.z) - (vecA.z * vecB.y);
@@ -132,6 +141,10 @@ void Vec4::set(float x_, float y_, float z_, float w_){
 
 Vec4::Vec4(float x, float y, float z, float w){
 	set(x, y, z, w);
+}
+
+Vec4::Vec4(Vec3 vec_, float w_){
+	set(vec_.x, vec_.y, vec_.z, w_);
 }
 
 Vec4::Vec4(const Vec4& v){
