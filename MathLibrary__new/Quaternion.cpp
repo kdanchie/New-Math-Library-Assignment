@@ -28,7 +28,7 @@ Quaternion::Quaternion(float w_, float x_, float y_, float z_) {
 
 Quaternion::Quaternion(Vec3 axis, float angleInDegrees) {
 	float radians = angleInDegrees * M_PI / 180;
-	axis = axis.Normalize(axis);
+	axis = axis.Normalize();
 	w = cos(radians / 2);
 	Vec3 v = axis * (sin(radians / 2));
 	set(v);

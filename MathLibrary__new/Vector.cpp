@@ -18,13 +18,6 @@ Vec3::Vec3(float x, float y, float z)
 	set(x, y, z);
 }
 
-void Vec3::Normalize_2(){
-	float mag = magnitude();
-	x = x / mag;
-	y = y / mag;
-	z = z / mag;
-}
-
 float Vec3::magnitude(){
 	return sqrt(x * x + y * y + z * z);
 }
@@ -73,13 +66,13 @@ Vec3& Vec3::operator=(const Vec3& v)
 	return *this;
 }
 
-float Vec3::Mag(const Vec3& vec){
-	return sqrt(vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
+float Vec3::Mag(){
+	return sqrt(x * x + y * y + z * z);
 }
 
-Vec3 Vec3::Normalize(const Vec3& vec){
-	float mag = sqrt(vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
-	return Vec3(vec.x / mag, vec.y / mag, vec.z / mag);
+Vec3 Vec3::Normalize(){
+	float magnitude = Mag();
+	return Vec3(x / magnitude, y / magnitude, z / magnitude);
 }
 
 const Vec4& Vec4::operator+(const Vec4& v) const{

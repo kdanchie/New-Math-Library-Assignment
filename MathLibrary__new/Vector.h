@@ -15,9 +15,8 @@ public:
 	Vec3& operator -= (const Vec3& v);
 	const Vec3& operator * (const float s) const;
 	Vec3& operator = (const Vec3& v);
-	static float Mag(const Vec3& vec);
-	static Vec3 Normalize(const Vec3& vec);
-	void Normalize_2();
+	float Mag();
+	Vec3 Normalize();
 	float magnitude();
 	static Vec3 cross(const Vec3& vecA, const Vec3& vecB);
 	static float dot(const Vec3& vecA, const Vec3& vecB);

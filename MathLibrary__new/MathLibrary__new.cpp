@@ -10,10 +10,10 @@ int main(){
 	Vec3 v(2.0, 2.0, 1.0);
 	Vec3 u(4.0, 2.0, 1.0);
 
-	float magnitude = Vec3::Mag(v);
+	float magnitude = v.Mag();
 	std::cout << "magnitude = " << magnitude << "\n\n";
 
-	Vec3 normalVec = Vec3::Normalize(v);
+	Vec3 normalVec = v.Normalize();
 	std::cout << "normalized vector " << normalVec.x << " " << normalVec.y << " " << normalVec.z << "\n\n";
 
 	float dotResult = Vec3::dot(v, u);
@@ -75,13 +75,13 @@ int main(){
 		//ray
 	Vec3 S(1, 0, 1);
 	Vec3 V(3, 2, 1);
-		// normalize V
+		// normalize V (not now)
 	Ray ray(S, V);
 
 	//plane
 	Vec3 N(1, 2, 3);
 	Vec3 p(1, 1, 0);
-	//N.Normalize_2();
+	//Vec3 NN = N.Normalize();
 	Plane plane = Plane(2, 1, 0, -4);
 
 	Vec3 inetrsect = plane.intersectionPoint(ray);
